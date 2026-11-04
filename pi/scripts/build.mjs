@@ -158,6 +158,20 @@ function transform(source, output, original) {
       for (const ref of related) text += `- [anthropic-data-${ref}](${linkTo(output, supportPath(ref))}).\n`;
       transforms.push('supporting-reference-navigation');
     }
+    if (name === 'build-dashboard') {
+      replace('dashboard-external-dependency-disclosure',
+        'Build a self-contained interactive HTML dashboard with charts, filters, tables, and professional styling. Opens directly in a browser -- no server or dependencies required.',
+        'Build an interactive HTML dashboard with embedded data, charts, filters, tables, and professional styling. Opens directly in a browser without a server; the supplied template requires CDN JavaScript unless it is embedded locally.');
+      replace('dashboard-external-dependency-disclosure',
+        'Generate a single self-contained HTML file using the base template below. The file includes:',
+        'Generate one HTML file with embedded data using the base template below. CDN JavaScript is an external dependency unless embedded. The file includes:');
+      replace('dashboard-external-dependency-disclosure', '- Dashboard works completely offline',
+        '- Offline operation requires embedding the JavaScript libraries locally and verifying the resulting dashboard with networking disabled. Embedded data alone does not establish offline operation.');
+      replace('dashboard-conditional-browser-verification', "2. Open it in the user's default browser",
+        '2. If an authorized browser inspection tool is available, open the saved dashboard for inspection. Otherwise leave it for manual review.');
+      replace('dashboard-conditional-browser-verification', '3. Confirm it renders correctly',
+        '3. Confirm rendering through actual browser inspection when available; otherwise mark rendering unverified and request manual review. Launching a browser alone is not verification.');
+    }
     if (name === 'data-context-extractor') {
       text += '\n## Pi resource paths and delivery\n\nResolve this reference and its nested files from the absolute path of this file,\nnot the caller\'s working directory. Read [skill template](references/skill-template.md),\n[domain template](references/domain-template.md), [SQL dialects](references/sql-dialects.md),\nand [fictional example](references/example-output.md) as needed. Use `read` and\n`write` or `edit` for the generated skill; `bash` runs the archive helper.\n\nSet RESOURCE_DIR to the absolute directory containing this reference, SKILL_DIR\nto the generated skill directory and OUTPUT_DIR to the chosen delivery directory.\nInvoke the bundled helper through its interpreter with quoted paths:\n\n```bash\npython3 "$RESOURCE_DIR/scripts/package_data_skill.py" "$SKILL_DIR" "$OUTPUT_DIR"\n```\n\nThe helper creates a zip archive, not a Pi package installer. Extract it and use\n`pi --skill "path/to/generated-skill"` to load the directory for one invocation.\nCompany context belongs in the user\'s chosen private location, outside this package.\n';
       transforms.push('context-extractor-pi-reference-paths-archive-delivery');

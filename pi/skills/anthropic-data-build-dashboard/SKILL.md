@@ -25,7 +25,7 @@ using optional external tools or installing missing local dependencies.
 
 > If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
 
-Build a self-contained interactive HTML dashboard with charts, filters, tables, and professional styling. Opens directly in a browser -- no server or dependencies required.
+Build an interactive HTML dashboard with embedded data, charts, filters, tables, and professional styling. Opens directly in a browser without a server; the supplied template requires CDN JavaScript unless it is embedded locally.
 
 ## Usage
 
@@ -89,7 +89,7 @@ Follow a standard dashboard layout pattern:
 
 ### 4. Build the HTML Dashboard
 
-Generate a single self-contained HTML file using the base template below. The file includes:
+Generate one HTML file with embedded data using the base template below. CDN JavaScript is an external dependency unless embedded. The file includes:
 
 **Structure (HTML):**
 - Semantic HTML5 layout
@@ -116,7 +116,7 @@ Generate a single self-contained HTML file using the base template below. The fi
 **Data (embedded JSON):**
 - All data embedded directly in the HTML as JavaScript variables
 - No external data fetches required
-- Dashboard works completely offline
+- Offline operation requires embedding the JavaScript libraries locally and verifying the resulting dashboard with networking disabled. Embedded data alone does not establish offline operation.
 
 ### 5. Implement Chart Types
 
@@ -137,8 +137,8 @@ Use the filter and interactivity implementation patterns below for dropdown filt
 ### 7. Save and Open
 
 1. Save the dashboard as an HTML file with a descriptive name (e.g., `sales_dashboard.html`)
-2. Open it in the user's default browser
-3. Confirm it renders correctly
+2. If an authorized browser inspection tool is available, open the saved dashboard for inspection. Otherwise leave it for manual review.
+3. Confirm rendering through actual browser inspection when available; otherwise mark rendering unverified and request manual review. Launching a browser alone is not verification.
 4. Provide instructions for updating data or customizing
 
 ---

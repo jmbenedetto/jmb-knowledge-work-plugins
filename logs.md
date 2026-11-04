@@ -32,3 +32,19 @@
   rendering, authenticated upstream CI scans and network URL probes. These checks
   require separate authorization or are outside this local implementation stage.
 - No push, merge, installation, global settings change or credential access occurred.
+
+## 2. Loaded dashboard instruction corrections, 2026-11-04
+
+- Fresh review found that generated skill instructions still promised offline use
+  despite CDN JavaScript and unconditionally required rendering verification.
+- Corrected only the Pi generator's compatibility text; original upstream `data/`
+  and the dashboard template/example code remain unchanged. Embedded data is now
+  distinguished from external libraries, and offline claims require local
+  embedding plus an actual networking-disabled browser check.
+- Rendering is checked with an authorized browser inspection tool when available;
+  otherwise the loaded workflow marks it unverified and requests manual review.
+  Launching a browser alone is explicitly insufficient evidence.
+- Both regressions were observed failing against generated resources before the
+  fix. Regenerated resources/provenance and reran the complete real-Pi suite:
+  18 passed, 0 failed/skipped. `npm run check` and `git diff --check` passed.
+- No real browser/offline artifact test was claimed or executed in this fix.

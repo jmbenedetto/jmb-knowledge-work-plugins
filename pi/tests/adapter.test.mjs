@@ -95,11 +95,38 @@ test('all upstream procedural lines survive except explicit host adaptation', as
   for (const record of manifest.files.filter(r => r.source.endsWith('/SKILL.md'))) {
     const original = (await read(record.source)).split('\n---\n').slice(1).join('\n---\n');
     const output = await read(record.output);
+    const dashboardCompatibilityLines = new Set([
+      'Build a self-contained interactive HTML dashboard with charts, filters, tables, and professional styling. Opens directly in a browser -- no server or dependencies required.',
+      'Generate a single self-contained HTML file using the base template below. The file includes:',
+      '- Dashboard works completely offline',
+      "2. Open it in the user's default browser",
+      '3. Confirm it renders correctly',
+    ]);
     for (const line of original.split('\n')) {
       if (!line.trim() || /Claude|~~|CONNECTORS|\/(?:analyze|build-dashboard|create-viz|explore-data|validate-data|write-query)\b|`(?:sql-queries|data-visualization)` skill/.test(line)) continue;
+      if (record.source === 'data/skills/build-dashboard/SKILL.md' && dashboardCompatibilityLines.has(line)) continue;
       assert.ok(output.includes(line), `${record.source}: missing procedural line ${line}`);
     }
   }
+});
+
+test('loaded dashboard skill qualifies offline claims while preserving the CDN template', async () => {
+  const text = await read('pi/skills/anthropic-data-build-dashboard/SKILL.md');
+  assert.doesNotMatch(text, /Dashboard works completely offline|no server or dependencies required|Generate a single self-contained HTML file/);
+  assert.match(text, /Offline operation requires embedding the JavaScript libraries locally/);
+  assert.match(text, /CDN JavaScript is an external dependency unless embedded/);
+  assert.match(text, /https:\/\/cdn\.jsdelivr\.net\/npm\/chart\.js@4\.5\.1/);
+  assert.match(text, /https:\/\/cdn\.jsdelivr\.net\/npm\/chartjs-adapter-date-fns@3\.0\.0/);
+  const provenance = JSON.parse(await read('pi/provenance.json'));
+  assert.ok(provenance.files.find(f => f.source === 'data/skills/build-dashboard/SKILL.md').transforms.includes('dashboard-external-dependency-disclosure'));
+});
+
+test('loaded dashboard skill requires observed rendering or an explicit unverified fallback', async () => {
+  const text = await read('pi/skills/anthropic-data-build-dashboard/SKILL.md');
+  assert.match(text, /If an authorized browser inspection tool is available/);
+  assert.match(text, /mark rendering unverified and request manual review/);
+  assert.match(text, /Launching a browser alone is not verification/);
+  assert.doesNotMatch(text, /^3\. Confirm it renders correctly$/m);
 });
 
 test('cross-skill references resolve to bundled namespaced resources instead of unavailable commands', async () => {

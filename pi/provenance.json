@@ -67,13 +67,18 @@
       "source": "data/skills/build-dashboard/SKILL.md",
       "sourceSha256": "6f23faa0b266820a23096f76df9d83e6b67597af4fc8c3306b4eba7e9f409f99",
       "output": "pi/skills/anthropic-data-build-dashboard/SKILL.md",
-      "outputSha256": "5483f01158031c9f8a38f1f8d3b465adf188f8874d7b6e746d5776809bf09f67",
+      "outputSha256": "ef09d986cdce5b7a708c865bcb2ea9f36474e209c6e2de6b4367b34cb621a00c",
       "transforms": [
         "namespace-frontmatter-remove-unsupported-fields",
         "modified-file-notice",
         "pi-command:build-dashboard",
         "pi-local-tools-portable-paths-optional-integrations",
-        "supporting-reference-navigation"
+        "supporting-reference-navigation",
+        "dashboard-external-dependency-disclosure",
+        "dashboard-external-dependency-disclosure",
+        "dashboard-external-dependency-disclosure",
+        "dashboard-conditional-browser-verification",
+        "dashboard-conditional-browser-verification"
       ]
     },
     {
