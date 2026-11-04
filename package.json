@@ -1,0 +1,31 @@
+{
+  "name": "@jmbenedetto/pi-anthropic-data",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pi adaptation of Anthropic's data analysis workflows, distributed from git.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "keywords": ["pi-package"],
+  "engines": {
+    "node": ">=20"
+  },
+  "files": ["pi/", "data/", "LICENSE"],
+  "scripts": {
+    "build": "node pi/scripts/build.mjs",
+    "check": "node pi/scripts/build.mjs --check",
+    "test": "node --test pi/tests/adapter.test.mjs"
+  },
+  "pi": {
+    "extensions": [],
+    "skills": [
+      "./pi/skills/anthropic-data-analyze",
+      "./pi/skills/anthropic-data-build-dashboard",
+      "./pi/skills/anthropic-data-create-viz",
+      "./pi/skills/anthropic-data-explore-data",
+      "./pi/skills/anthropic-data-validate-data",
+      "./pi/skills/anthropic-data-write-query"
+    ],
+    "prompts": [],
+    "themes": []
+  }
+}
