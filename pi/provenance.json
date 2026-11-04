@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "upstream": {
+    "repository": "https://github.com/anthropics/knowledge-work-plugins",
+    "commit": "2574e29377c7173d0cecffef29a6ecbd7f8ccb5d",
+    "plugin": "data",
+    "version": "1.1.0"
+  },
+  "adapter": {
+    "package": "@jmbenedetto/pi-anthropic-data",
+    "resourceCount": 6,
+    "entry": "pi/skills/anthropic-data-analyze/SKILL.md",
+    "generator": "pi/scripts/build.mjs"
+  },
+  "files": [
+    {
+      "source": "data/.claude-plugin/plugin.json",
+      "sourceSha256": "9a6e5a0dfb8aa482914f36a0466e2514cc757d418fa741187b5ff84bf32d405f",
+      "output": null,
+      "reason": "Host-specific plugin metadata is replaced by the root Pi manifest."
+    },
+    {
+      "source": "data/.mcp.json",
+      "sourceSha256": "359c6cc16ca1aea8e709b1940d296ae4d3f9bfb1acef9d75c523a3d6b05f4939",
+      "output": null,
+      "reason": "External integrations are opt-in; no upstream MCP configuration is enabled."
+    },
+    {
+      "source": "data/CONNECTORS.md",
+      "sourceSha256": "79de0e9613ef7870e773b6dcdcb7d50f4bff2c0574c14ab5e0aeb29014dcec7b",
+      "output": "pi/CONNECTORS.md",
+      "outputSha256": "1ed4782bdd60ee0cb2bcb5821e8f90e3172286a5ff5416c5aba327ef8704e389",
+      "transforms": [
+        "replace-host-connector-configuration-with-opt-in-pi-capabilities"
+      ]
+    },
+    {
+      "source": "data/LICENSE",
+      "sourceSha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "output": "pi/LICENSE",
+      "outputSha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "transforms": []
+    },
+    {
+      "source": "data/README.md",
+      "sourceSha256": "4c7eb5edd9298a3cec8bb6a3cd703f28c81d3bf405ff790d6a70588d7131db70",
+      "output": null,
+      "reason": "Upstream overview retained in data/; Pi usage is documented separately in pi/README.md."
+    },
+    {
+      "source": "data/skills/analyze/SKILL.md",
+      "sourceSha256": "4ee816363d944c7a959e43384576d979a414f37fff7071c0bfb8935aae10143e",
+      "output": "pi/skills/anthropic-data-analyze/SKILL.md",
+      "outputSha256": "f25a5cefad0cf72cabcda567077b6b2de413ffbd20a41584596088f3377ff845",
+      "transforms": [
+        "namespace-frontmatter-remove-unsupported-fields",
+        "modified-file-notice",
+        "pi-command:analyze",
+        "linked-reference:data-visualization",
+        "linked-reference:sql-queries",
+        "pi-local-tools-portable-paths-optional-integrations",
+        "supporting-reference-navigation",
+        "host-name:Pi"
+      ]
+    },
+    {
+      "source": "data/skills/build-dashboard/SKILL.md",
+      "sourceSha256": "6f23faa0b266820a23096f76df9d83e6b67597af4fc8c3306b4eba7e9f409f99",
+      "output": "pi/skills/anthropic-data-build-dashboard/SKILL.md",
+      "outputSha256": "5483f01158031c9f8a38f1f8d3b465adf188f8874d7b6e746d5776809bf09f67",
+      "transforms": [
+        "namespace-frontmatter-remove-unsupported-fields",
+        "modified-file-notice",
+        "pi-command:build-dashboard",
+        "pi-local-tools-portable-paths-optional-integrations",
+        "supporting-reference-navigation"
+      ]
+    },
+    {
+      "source": "data/skills/create-viz/SKILL.md",
+      "sourceSha256": "3b13a9c2c9d2b1d36f9c323d952d93f578216f2094bc80d4be6fd4ccbfe9b77d",
+      "output": "pi/skills/anthropic-data-create-viz/SKILL.md",
+      "outputSha256": "1d361d93f198eca8060490b003ddfaa0192e2e51c1d9fb67843b4ac35ab71d23",
+      "transforms": [
+        "namespace-frontmatter-remove-unsupported-fields",
+        "modified-file-notice",
+        "pi-command:create-viz",
+        "pi-local-tools-portable-paths-optional-integrations",
+        "supporting-reference-navigation",
+        "host-name:Pi"
+      ]
+    },
+    {
+      "source": "data/skills/data-context-extractor/SKILL.md",
+      "sourceSha256": "6d05dec52ac3667b551898b9eb943f5ee08141bc8d2fabb69a8e39bb9ce7c754",
+      "output": "pi/skills/anthropic-data-analyze/references/anthropic-data-data-context-extractor/REFERENCE.md",
+      "outputSha256": "5f341bf025c38818afd36f55ebb6b2156d291b4fa96c4f0f9b719d5dba9ae9e1",
+      "transforms": [
+        "namespace-frontmatter-remove-unsupported-fields",
+        "modified-file-notice",
+        "context-extractor-pi-reference-paths-archive-delivery",
+        "explicit-warehouse-capability"
+      ]
+    },
+    {
+      "source": "data/skills/data-context-extractor/references/domain-template.md",
+      "sourceSha256": "ad5658dba15bf15faae05ade116cdb9bc5c7cac2057a3dbd56a52556bf25faba",
+      "output": "pi/skills/anthropic-data-analyze/references/anthropic-data-data-context-extractor/references/domain-template.md",
+      "outputSha256": "ad5658dba15bf15faae05ade116cdb9bc5c7cac2057a3dbd56a52556bf25faba",
+      "transforms": []
+    },
+    {
+      "source": "data/skills/data-context-extractor/references/example-output.md",
+      "sourceSha256": "b19e188ed03d9417ff1136187944a6f9125c7da40b6ecb22abe096edd985932e",
+      "output": "pi/skills/anthropic-data-analyze/references/anthropic-data-data-context-extractor/references/example-output.md",
+      "outputSha256": "b19e188ed03d9417ff1136187944a6f9125c7da40b6ecb22abe096edd985932e",
+      "transforms": []
+    },
+    {
+      "source": "data/skills/data-context-extractor/references/skill-template.md",
+      "sourceSha256": "0ceedd25de9a1e278832fc84e6124334af1bc6eaf7e4d3a29f31c23451cb3a71",
+      "output": "pi/skills/anthropic-data-analyze/references/anthropic-data-data-context-extractor/references/skill-template.md",
+      "outputSha256": "0ceedd25de9a1e278832fc84e6124334af1bc6eaf7e4d3a29f31c23451cb3a71",
+      "transforms": []
+    },
+    {
+      "source": "data/skills/data-context-extractor/references/sql-dialects.md",
+      "sourceSha256": "a62f61bf64699f7919f4360cce7255794522406c36689069c78c95796fce0ba0",
+      "output": "pi/skills/anthropic-data-analyze/references/anthropic-data-data-context-extractor/references/sql-dialects.md",
+      "outputSha256": "a62f61bf64699f7919f4360cce7255794522406c36689069c78c95796fce0ba0",
+      "transforms": []
+    },
+    {
+      "source": "data/skills/data-context-extractor/scripts/package_data_skill.py",
+      "sourceSha256": "ce79da32ea049db99c91fff0dfcc8ba1ece91940bbbf992de9283cdebe5a4d64",
+      "output": "pi/skills/anthropic-data-analyze/references/anthropic-data-data-context-extractor/scripts/package_data_skill.py",
+      "outputSha256": "eaea5e50343e88856dea96676ca5edef9e8003a30cc353914ad35442be4172f0",
+      "transforms": [
+        "portable-python-invocation-examples",
+        "zip-format-description",
+        "archive-hidden-check-relative-to-skill-root",
+        "modified-file-notice"
+      ]
+    },
+    {
+      "source": "data/skills/data-visualization/SKILL.md",
+      "sourceSha256": "5811e8b3547cda6bc8af118aaf0d7589e8861cdc9facce6372dc78aea99ab87d",
+      "output": "pi/skills/anthropic-data-analyze/references/anthropic-data-data-visualization/REFERENCE.md",
+      "outputSha256": "eedba94b9ae7c55bbaf7ed6c9123c0d87926ba6469ea8bb871917150296da045",
+      "transforms": [
+        "namespace-frontmatter-remove-unsupported-fields",
+        "modified-file-notice"
+      ]
+    },
+    {
+      "source": "data/skills/explore-data/SKILL.md",
+      "sourceSha256": "af7590fa616360259da712b5ede5f79b817beb854c47a465f95774354988e8a2",
+      "output": "pi/skills/anthropic-data-explore-data/SKILL.md",
+      "outputSha256": "f6cf255ad0ca6d2a18611cd48f6d666fdac9265cce254ede64f1379c7671cec5",
+      "transforms": [
+        "namespace-frontmatter-remove-unsupported-fields",
+        "modified-file-notice",
+        "pi-command:explore-data",
+        "pi-local-tools-portable-paths-optional-integrations",
+        "supporting-reference-navigation"
+      ]
+    },
+    {
+      "source": "data/skills/sql-queries/SKILL.md",
+      "sourceSha256": "dbd5a5e2d563d83ca6d4d033206f285f503296eabff4a35545cdb4cb5302bd9a",
+      "output": "pi/skills/anthropic-data-analyze/references/anthropic-data-sql-queries/REFERENCE.md",
+      "outputSha256": "fba21caa793f9b38f89d89005c7163da5fe9ccc39bca820fdabb8132b2fdbc75",
+      "transforms": [
+        "namespace-frontmatter-remove-unsupported-fields",
+        "modified-file-notice"
+      ]
+    },
+    {
+      "source": "data/skills/statistical-analysis/SKILL.md",
+      "sourceSha256": "91a15cfc144efffcd622b09827362a73993a3ff30e3a78114801832477c9f8a0",
+      "output": "pi/skills/anthropic-data-analyze/references/anthropic-data-statistical-analysis/REFERENCE.md",
+      "outputSha256": "8a43016978eaa1fc4e57572683440152933e72dbb9d03acc76cf5499b86ddec3",
+      "transforms": [
+        "namespace-frontmatter-remove-unsupported-fields",
+        "modified-file-notice"
+      ]
+    },
+    {
+      "source": "data/skills/validate-data/SKILL.md",
+      "sourceSha256": "1e424822043480375b80aef9416227b1c8083af749ca536568716265f79ca54b",
+      "output": "pi/skills/anthropic-data-validate-data/SKILL.md",
+      "outputSha256": "adfd4e19572e7057cb0b957c61c0e62935c1d6ab05d0d0e4d532239fb5cf1edd",
+      "transforms": [
+        "namespace-frontmatter-remove-unsupported-fields",
+        "modified-file-notice",
+        "pi-command:validate-data",
+        "pi-local-tools-portable-paths-optional-integrations",
+        "supporting-reference-navigation"
+      ]
+    },
+    {
+      "source": "data/skills/write-query/SKILL.md",
+      "sourceSha256": "4c7ef791db1f23504c457cc52de0d8855d26f176d5acf037260deb1b98e5e34e",
+      "output": "pi/skills/anthropic-data-write-query/SKILL.md",
+      "outputSha256": "5f7c49ecdd333f8496bbed4919de9d969be6945caff4a882f92b5e2830ff62b3",
+      "transforms": [
+        "namespace-frontmatter-remove-unsupported-fields",
+        "modified-file-notice",
+        "pi-command:write-query",
+        "linked-reference:sql-queries",
+        "pi-local-tools-portable-paths-optional-integrations",
+        "supporting-reference-navigation",
+        "host-name:Pi"
+      ]
+    }
+  ],
+  "generatedNotices": [
+    "pi/NOTICE"
+  ]
+}
