@@ -48,3 +48,20 @@
   fix. Regenerated resources/provenance and reran the complete real-Pi suite:
   18 passed, 0 failed/skipped. `npm run check` and `git diff --check` passed.
 - No real browser/offline artifact test was claimed or executed in this fix.
+
+## 3. Fork marketplace identity, 2026-11-05
+
+- User approved a distinct `jmb-` marketplace prefix so the fork can register in
+  Claude Code without claiming Anthropic's reserved marketplace identity.
+- Changed only the marketplace manifest's top-level name to
+  `jmb-knowledge-work-plugins`. Repository name, owner attribution and every
+  plugin implementation remain unchanged.
+- No business inputs, benchmark artifacts, credentials or third-party private
+  plugin material are included. Native marketplace validation and Pi generation
+  checks accompany this metadata-only change; installation is a separate local
+  user-authorized operation.
+- Native validation found one inherited reserved catalog entry,
+  `claude-for-financial-advisors`, pointing to Anthropic's external repository.
+  Following explicit user approval, removed only that unused external listing
+  from this fork's catalog. Its upstream repository is unchanged; the remaining
+  catalog entries and all local plugin implementations are preserved.
